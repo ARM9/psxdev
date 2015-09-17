@@ -1,5 +1,5 @@
 
-    .section .init
+    .section .boot,"ax",@progbits
     .align 2
     .global _start
     .type _start,@function
