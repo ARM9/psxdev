@@ -1,3 +1,6 @@
+#include <stdint.h>
+#include <stddef.h>
+#include <limits.h>
 
 int foo[] = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17};
 char *bar = "HELLO WORLD!!!!!";
@@ -16,6 +19,12 @@ int main(int argc, char *argv[])
     char *baz = "pigs\non\rthe    wing  ";
     const int lci = 0xbeefcace;
 
+    int a = sizeof(int8_t);
+    int b = sizeof(uint32_t);
+    int c = sizeof(int64_t);
+
+    int d = INT_MAX;
+    long long e = LLONG_MAX;
     sectionTest();
     /*double y = 3.14*2;*/
     /*float x = 1.0/((double) argc);*/
