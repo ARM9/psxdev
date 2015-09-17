@@ -12,6 +12,13 @@ const int ci = 0xcacebeef;
 
 extern void sectionTest(void);
 
+struct myStruct_s {
+    int first;
+    char second;
+    char third;
+    char *fourth;
+};
+
 int main(int argc, char *argv[])
 {
     static char *laz = "don't raise your voice in public";
@@ -21,10 +28,15 @@ int main(int argc, char *argv[])
 
     int a = sizeof(int8_t);
     int b = sizeof(uint32_t);
+    int b2 = sizeof(size_t);
     int c = sizeof(int64_t);
 
     int d = INT_MAX;
     long long e = LLONG_MAX;
+    struct myStruct_s mys = {.first=42, .second='2', .fourth=baz};
+    size_t f = offsetof(struct myStruct_s, second);
+    size_t g = offsetof(struct myStruct_s, third);
+    size_t h = offsetof(struct myStruct_s, fourth);
     sectionTest();
     /*double y = 3.14*2;*/
     /*float x = 1.0/((double) argc);*/
