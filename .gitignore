@@ -16,5 +16,6 @@ build/
 *.swp
 *.swo
 *.tmp
+*.bak
 .tags
 tags
