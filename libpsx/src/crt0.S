@@ -2,7 +2,7 @@
     .section .boot,"ax",@progbits
     .align 2
     .global _start
-    .type _start,@function
+    .type _start, @function
 _start:
     .set noat; .set noreorder
 
