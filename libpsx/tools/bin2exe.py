@@ -28,12 +28,12 @@ def main(argv):
         ofile.seek(0x10)
         ofile.write(struct.pack('<I',0x80010000))
         # Initial GP/R28 (crt0.S currently sets this)
-        ofile.write(struct.pack('<I',0x80010000))
+        ofile.write(struct.pack('<I',0xFFFFFFFF))
         # Destination address in RAM
         ofile.write(struct.pack('<I',0x80010000))
-        # Initial SP/R29 & FP/R30 (crt0.S also sets this)
+        # Initial SP/R29 & FP/R30
         ofile.seek(0x30)
-        ofile.write(struct.pack('<I',0x801FFFF0))
+        ofile.write(struct.pack('<I',0x801FFF00))
         # SP & FP offset added to    ^^^^^^^^^^ just use 0
         #ofile.write(struct.pack('<I',0x00000000))
         # Zero fill rest of the header
@@ -49,7 +49,7 @@ def main(argv):
         # Pad binary to 0x800 boundary
         exe_size = ofile.tell()
         if exe_size % 0x800 != 0:
-            exe_size = ofile.tell() + (0x800 - (ofile.tell() % 0x800))
+            exe_size += (0x800 - (exe_size % 0x800))
             ofile.seek(exe_size-1)
             ofile.write(struct.pack('B',0))
 

@@ -12,5 +12,7 @@ typedef int ptrdiff_t;
 typedef int ssize_t;
 typedef unsigned size_t;
 
+typedef int wchar_t;
+
 #endif
 

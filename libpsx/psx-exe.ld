@@ -6,11 +6,15 @@ EXTERN(_start)
 ENTRY(_start)
 
 MEMORY {
-    wram : ORIGIN = 0x80010000, LENGTH = 2M - 0x10000
+    wram    : ORIGIN = 0x80010000, LENGTH = 2M - 0x10000
+    dcache  : ORIGIN = 0x1F800000, LENGTH = 0x400
 }
 
-__wram_top   = ORIGIN(wram) + LENGTH(wram);
+__wram_top  = ORIGIN(wram) + LENGTH(wram);
 __sp        = __wram_top - 0x100;
+
+__dcache        = ORIGIN(dcache);
+__dcache_top    = ORIGIN(dcache) + LENGTH(dcache);
 
 SECTIONS {
     . = ORIGIN(wram);

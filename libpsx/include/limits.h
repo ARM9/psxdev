@@ -21,16 +21,19 @@
 #define SHRT_MAX    32767
 #define USHRT_MAX   65535
 
+#undef  __INT_MAX__
 #define __INT_MAX__ 2147483647
 #define INT_MIN     (-INT_MAX-1)
 #define INT_MAX     __INT_MAX__
 #define UINT_MAX    4294967295U
 
+#undef  __LONG_MAX__
 #define __LONG_MAX__ 2147483647L
 #define LONG_MIN     (-LONG_MAX-1)
 #define LONG_MAX     __LONG_MAX__
 #define ULONG_MAX    4294967295UL
 
+#undef  __LONG_LONG_MAX__
 #define __LONG_LONG_MAX__   9223372036854775807LL
 #if defined (__STDC_VERSION__) && __STDC_VERSION__ >= 199901L
 #   define LLONG_MIN   (-LLONG_MAX-1)
