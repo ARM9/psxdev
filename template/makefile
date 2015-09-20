@@ -27,12 +27,12 @@ VPATH	:= $(foreach dir,$(sources),$(CURDIR)/$(dir))
 all: release
 
 debug: asflags	+= -DDEBUG
-debug: cflags	+= -Os -DDEBUG
+debug: cflags	+= -O2 -DDEBUG
 debug: ldflags	+=
 debug: $(output).exe
 
 release: asflags	+=
-release: cflags		+= -Os -flto -ffat-lto-objects
+release: cflags		+= -O2 -flto -ffat-lto-objects
 release: ldflags	+= -flto -ffat-lto-objects
 release: $(output).exe
 

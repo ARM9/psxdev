@@ -1,8 +1,9 @@
-CC	:= mips64-elf-gcc
-AS	:= mips64-elf-as
-LD	:= mips64-elf-ld
-OBJCOPY	:= mips64-elf-objcopy
-OBJDUMP	:= mips64-elf-objdump
+prefix	:= mips64-elf-
+CC	:= $(prefix)gcc
+AS	:= $(prefix)as
+LD	:= $(prefix)ld
+OBJCOPY	:= $(prefix)objcopy
+OBJDUMP	:= $(prefix)objdump
 bin2exe	= python $(libpsx)/tools/bin2exe.py
 
 emudir	:= $(DEVKITPRO)/emulators
