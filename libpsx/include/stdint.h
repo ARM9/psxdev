@@ -38,6 +38,10 @@ typedef uint32_t uintptr_t;
 #define INT64_MAX   __INT64_MAX__
 #define UINT64_MAX  (__INT64_MAX__ * 2ULL + 1)
 
+#define INTMAX_MAX INT64_MAX
+#define INTMAX_MIN INT64_MIN
+#define UINTMAX_MAX UINT64_MAX
+
 #undef  __INTPTR_MAX__
 #define __INTPTR_MAX__  __INT32_MAX__
 #define INTPTR_MIN  (-INTPTR_MAX-1)
