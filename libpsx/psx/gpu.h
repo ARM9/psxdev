@@ -3,7 +3,6 @@
 #define LIBPSX_PSX_GPU_H
 
 #include <stdint.h>
-#include <psx_io.h>
 
 // 15bpp format: bbbbb---ggggg---rrrrr---
 // 24bpp format: bbbbbbbbggggggggrrrrrrrr
@@ -11,8 +10,12 @@
 // GPU Registers
 #define GP  ((volatile unsigned*)0x1F801810)
 
-#undef GP0
-#undef GP1
+#ifdef GP0
+#   undef GP0
+#endif
+#ifdef GP1
+#   undef GP1
+#endif
 // Send command c with parameters p
 #define GP0(c,p)  GP[0] = (((c)<<24)|(p))
 #define GP1(c,p)  GP[1] = (((c)<<24)|(p))

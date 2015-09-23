@@ -1,5 +1,5 @@
-#include <psx_io.h>
-#include <interrupts.h>
+#include <psx/io.h>
+#include <psx/interrupts.h>
 
 void waitVblank(void) {
     while(!(IRQ_STAT & IRQ_VBLANK));

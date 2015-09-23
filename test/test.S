@@ -14,6 +14,8 @@ sectionTest:
     .data
     .align 2
 foo:
+    .byte 0xfeedbacc
+    .byte 0xfeedbacc>>8
     .word   0xfeedbacc
     .int    0xabad1dea
     

@@ -6,7 +6,7 @@ target	:= $(shell basename $(CURDIR))
 output	:= $(target)
 build	:= build
 sources	:= . $(libpsx)/src
-incdirs	:= . $(libpsx)/include $(build)
+incdirs	:= . $(libpsx) $(libpsx)/include $(build)
 includes:= $(foreach dir,$(incdirs),-I$(dir))
 
 arch	:= -march=r3000 -mabi=32 -EL -msoft-float -Wa,-msoft-float
