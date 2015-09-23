@@ -51,17 +51,6 @@
 #define IRQ_STAT    IO_16(0x1F801070) // 2    Interrupt status register
 #define IRQ_MASK    IO_16(0x1F801074) // 2    Interrupt mask register
 
-#define IRQ_VBLANK  0x001
-#define IRQ_GPU     0x002
-#define IRQ_CDROM   0x004
-#define IRQ_DMA     0x008
-#define IRQ_TIMER0  0x010
-#define IRQ_TIMER1  0x020
-#define IRQ_TIMER2  0x040
-#define IRQ_MEMCARD 0x080
-#define IRQ_SIO     0x100
-#define IRQ_SPU     0x200
-#define IRQ_PIO     0x400
 /*
 // DMA Registers
   0x1F80108x      DMA0 channel 0 - MDECin

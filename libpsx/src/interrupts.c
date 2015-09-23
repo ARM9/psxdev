@@ -2,13 +2,12 @@
 #include <psx/interrupts.h>
 
 void waitVblank(void) {
-    while(!(IRQ_STAT & IRQ_VBLANK));
-    IRQ_STAT = ~IRQ_VBLANK;
-    int dummy;
+    while(!(IRQ_STAT & IrqVblank));
+    IRQ_STAT = ~IrqVblank;
+    unsigned cop0_sr_flag = 1<<8;
     __asm__ __volatile__ (
-            "li %[t], 1<<8\n\t"
             "mtc0 %[t], $12\n\t"
-            :[t] "=r" (dummy)
-            ::);
+            ::[t] "r" (cop0_sr_flag)
+            :);
 }
 
