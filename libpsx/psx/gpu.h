@@ -14,12 +14,13 @@
 #define GP0_DO(c,p)  GP[0] = (((c)<<24)|(p))
 #define GP1_DO(c,p)  GP[1] = (((c)<<24)|(p))
 
-
+// GPUSTAT flags
 #define Gp0CmdReady 0x04000000
 #define Gp0DmaReady 0x10000000
 
 void waitGpu(unsigned status);
 
+// GP0 drawing commands
 #define FlatTriOpaque               0x20
 #define FlatTri                     0x22
 #define FlatQuadOpaque              0x28
@@ -80,6 +81,14 @@ void waitGpu(unsigned status);
 #define TexRect16x16OpaqueRaw       0x7D
 #define TexRect16x16Blend           0x7E
 #define TexRect16x16Raw             0x7F
+
+// GP0 attribute commands
+#define DrawMode            0xE1
+#define TextureWindow       0xE2
+#define DrawAreaTopLeft     0xE3
+#define DrawAreaBottomRight 0xE4
+#define DrawOffset          0xE5
+#define MaskBit             0xE6
 
 #define DMODE_HRES_256  0x00
 #define DMODE_HRES_320  0x01

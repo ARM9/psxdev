@@ -5,7 +5,7 @@ libpsx	:= ../libpsx
 target	:= $(shell basename $(CURDIR))
 output	:= $(target)
 build	:= build
-sources	:= . $(libpsx)/src
+sources	:= . $(libpsx)/libc $(libpsx)/psx
 incdirs	:= . $(libpsx) $(libpsx)/include $(build)
 includes:= $(foreach dir,$(incdirs),-I$(dir))
 

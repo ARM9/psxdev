@@ -45,15 +45,15 @@ void qsort(void *base, size_t nitems, size_t item_size,
 
 }
 
-void *malloc(size_t size) {
+void *malloc(size_t n) {
     return NULL;
 }
 
-void *calloc(size_t num, size_t size) {
+void *calloc(size_t num, size_t n) {
     return NULL;
 }
 
-void *realloc(void *block, size_t size) {
+void *realloc(void *block, size_t n) {
     return NULL;
 }
 
