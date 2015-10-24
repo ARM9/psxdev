@@ -2,11 +2,11 @@
 
 int main(void)
 {
-	GX_Init(0, 0, 640, 480);
+	GX_Init();
 	while (1)
 	{
-		GX_Sync();
 		GX_FillRect(100, 100, 80, 60, GX_RGB(0, 255, 255));
+		GX_Sync();
     }
     return 0;
 }
