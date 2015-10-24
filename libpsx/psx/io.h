@@ -1,6 +1,6 @@
 
-#ifndef LIBPSX_PSX_IO_H
-#define LIBPSX_PSX_IO_H
+#ifndef LIBPSX_IO_H
+#define LIBPSX_IO_H
 
 #ifndef __LANGUAGE_ASSEMBLY
 #   define IO_8(x) (*(volatile unsigned char *)x)

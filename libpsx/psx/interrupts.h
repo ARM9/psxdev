@@ -1,7 +1,10 @@
 
-#ifndef LIBPSX_PSX_INTERRUPTS_H
-#define LIBPSX_PSX_INTERRUPTS_H
+#ifndef LIBPSX_INTERRUPTS_H
+#define LIBPSX_INTERRUPTS_H
 
+#include <stdint.h>
+
+// IRQ_STAT and IRQ_MASK flags
 #define IrqVblank   0x001
 #define IrqGpu      0x002
 #define IrqCdrom    0x004
@@ -13,6 +16,8 @@
 #define IrqSio      0x100
 #define IrqSpu      0x200
 #define IrqPio      0x400
+
+void initIrq(uint16_t);
 
 void waitVblank(void);
 

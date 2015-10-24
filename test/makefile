@@ -11,7 +11,7 @@ includes:= $(foreach dir,$(incdirs),-I$(dir))
 
 arch	:= -march=r3000 -mabi=32 -EL -msoft-float -Wa,-msoft-float
 asflags	:= -g $(arch)
-cflags	:= -g -std=c99 -Wall -Wextra -pedantic -mgpopt -mno-extern-sdata -pipe $(arch)
+cflags	:= -g -std=c99 -Wall -Wextra -Wpadded -pedantic -mgpopt -mno-extern-sdata -pipe $(arch)
 ldflags	:= $(cflags) -Wl,-Map=$(target).map -nostdlib -T$(libpsx)/psx-exe.ld
 
 sfiles	:= $(foreach dir,$(sources),$(notdir $(wildcard $(dir)/*.S)))
