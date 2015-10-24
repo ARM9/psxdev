@@ -56,3 +56,25 @@ void GX_DrawTriangle_SingleColor(
 	gx_vec2_t v2,
 	gx_rgb24 color
 	);
+
+/* Draws a monotone quad
+	Vertex order:
+	v0--------------v2
+	|                |
+	|                |
+	|                |
+	|                |
+	|                |
+	|                |
+	v1--------------v3
+	
+ */
+void GX_DrawQuad_SingleColor(
+	gx_vec2_t v0,
+	gx_vec2_t v1,
+	gx_vec2_t v2,
+	gx_vec2_t v3,
+	gx_rgb24 color
+	);
+
+	

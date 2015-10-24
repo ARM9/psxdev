@@ -54,3 +54,18 @@ void GX_DrawTriangle_SingleColor(
 	GP[0] = GX_PACK_VEC2(v1);
 	GP[0] = GX_PACK_VEC2(v2);
 }
+
+void GX_DrawQuad_SingleColor(
+	gx_vec2_t v0,
+	gx_vec2_t v1,
+	gx_vec2_t v2,
+	gx_vec2_t v3,
+	gx_rgb24 color
+	)
+{
+	GP0_DO(FlatQuadOpaque, color);
+	GP[0] = GX_PACK_VEC2(v0);
+	GP[0] = GX_PACK_VEC2(v1);
+	GP[0] = GX_PACK_VEC2(v2);
+	GP[0] = GX_PACK_VEC2(v3);
+}
