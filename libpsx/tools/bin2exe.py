@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+from __future__ import print_function
 import os
 import sys
 import struct
@@ -10,20 +11,23 @@ python bin2exe.py infile outfile
 
 def main(argv):
     if len(argv) != 2:
-        print >>sys.stderr, usage
+        print(usage, file=sys.stderr)
         sys.exit(1)
 
     max_size = 0x200000
     infile_size = os.path.getsize(argv[0])
     if infile_size > max_size:
-        print >>sys.stderr, "Error: Input file %s longer than %d bytes" % (argv[0], max_size)
+        print("Error: Input file %s longer than %d bytes" % (argv[0], max_size), file=sys.stderr)
         sys.exit(1)
 
     ofile = open(argv[1], 'wb')
     
     with open(argv[0], 'rb') as ifile:
         # Write header
-        ofile.write("PS-X EXE")
+        if sys.version_info >= (3, 0):
+            ofile.write(bytes('PS-X EXE', 'ascii'))
+        else:
+            ofile.write('PS-X EXE')
         # Entry point
         ofile.seek(0x10)
         ofile.write(struct.pack('<I',0x80010000))

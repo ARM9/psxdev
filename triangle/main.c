@@ -16,9 +16,11 @@ void initGpu(void) {
     GP1_DO(EnableDisplay, 0);
 
     GP0_DO(DrawMode,            BIT(10));
-    GP0_DO(DrawAreaTopLeft,     0x002000);
-    GP0_DO(DrawAreaBottomRight, 0x039D3F);
-    GP0_DO(DrawOffset,          0x004000);
+    GP0_DO(DrawAreaTopLeft,     (0<<10) | 0);
+    GP0_DO(DrawAreaBottomRight, ((0+480/2)<<10) | (0 + 640/2));
+    //GP0_DO(DrawAreaTopLeft,     0x002000);
+    //GP0_DO(DrawAreaBottomRight, 0x039D3F);
+    GP0_DO(DrawOffset,          0x000000);
     GP0NOP;
 }
 
@@ -141,7 +143,7 @@ int main(void)
         waitGpu(Gp0CmdReady);
         // 15bpp format: bbbbb---ggggg---rrrrr---
         glFlatTri2fp(&tri1);
-        waitGpu(Gp0CmdReady);
+        //waitGpu(Gp0CmdReady);
 
         glDrawTris(pyramid, pyramid_size);
         /*glFlatLine2fp(&myline);*/

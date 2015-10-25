@@ -3,12 +3,12 @@
 #define LIBPSX_IO_H
 
 #ifndef __LANGUAGE_ASSEMBLY
-#   define IO_8(x) (*(volatile unsigned char *)x)
-#   define IO_16(x) (*(volatile unsigned short *)x)
-#   define IO_32(x) (*(volatile unsigned int *)x)
-#   define IO_S8(x) (*(volatile char *)x)
-#   define IO_S16(x) (*(volatile short *)x)
-#   define IO_S32(x) (*(volatile int *)x)
+#   define IO_8(x) (*(volatile unsigned char *)(x))
+#   define IO_16(x) (*(volatile unsigned short *)(x))
+#   define IO_32(x) (*(volatile unsigned int *)(x))
+#   define IO_S8(x) (*(volatile char *)(x))
+#   define IO_S16(x) (*(volatile short *)(x))
+#   define IO_S32(x) (*(volatile int *)(x))
 #else
 #   define IO_8(x) (x)
 #   define IO_16(x) (x)
@@ -48,8 +48,15 @@
 // Memory Control 2
 #define RAM_SIZE    IO_32(0x1F801060) // 4/2  (usually 00000B88h; 2MB RAM mirrored in first 8MB)
 // Interrupt Control
-#define IRQ_STAT    IO_16(0x1F801070) // 2    Interrupt status register
-#define IRQ_MASK    IO_16(0x1F801074) // 2    Interrupt mask register
+#define IRQ_STAT    IO_16(0x1F801070) // 2      Interrupt status register
+#define IRQ_MASK    IO_16(0x1F801074) // 2      Interrupt mask register
+
+#define DMA_MADR(ch)   IO_32(0x1F801080 + (ch * 0x10))
+#define DMA_BCR(ch)    IO_32(0x1F801084 + (ch * 0x10))
+#define DMA_CHCR(ch)   IO_32(0x1F801088 + (ch * 0x10))
+
+#define DMA_DPCR    IO_32(0x1F8010F0) // 4      DMA contrl register
+#define DMA_DICR    IO_32(0x1F8010F4) // 4      DMA interrupt register
 
 /*
 // DMA Registers
@@ -60,10 +67,6 @@
   0x1F8010Cx      DMA4 channel 4 - SPU
   0x1F8010Dx      DMA5 channel 5 - PIO (Expansion Port)
   0x1F8010Ex      DMA6 channel 6 - OTC (reverse clear OT) (GPU related)
-  0x1F8010F0      DPCR - DMA Control register
-  0x1F8010F4      DICR - DMA Interrupt register
-  0x1F8010F8      unknown
-  0x1F8010FC      unknown
 // Timers (aka Root counters)
   0x1F80110x      Timer 0 Dotclock
   0x1F80111x      Timer 1 Horizontal Retrace
